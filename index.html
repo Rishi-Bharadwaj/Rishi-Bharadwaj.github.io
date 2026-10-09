@@ -1,0 +1,99 @@
+---
+layout: default
+---
+<section class="intro">
+  <div class="intro-text">
+    <h1>{{ site.author.name }}</h1>
+    <p class="role">Research Associate, Game Theory Lab, Indian Institute of Science, Bengaluru</p>
+    <ul class="contact">
+      <li><a href="mailto:{{ site.author.email }}">Email</a></li>
+      {% if site.author.github %}<li><a href="https://github.com/{{ site.author.github }}">GitHub</a></li>{% endif %}
+      {% if site.author.scholar != "" %}<li><a href="{{ site.author.scholar }}">Google Scholar</a></li>{% endif %}
+      {% if site.author.linkedin != "" %}<li><a href="{{ site.author.linkedin }}">LinkedIn</a></li>{% endif %}
+      <li><a href="{{ site.author.cv | relative_url }}">CV (PDF)</a></li>
+    </ul>
+  </div>
+
+  <figure class="game">
+    <table>
+      <caption class="visually-hidden">Prisoner's dilemma payoffs, row player first</caption>
+      <thead>
+        <tr><td></td><th scope="col">C</th><th scope="col">D</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">C</th>
+          <td class="cell coop"><span class="pay">3, 3</span><span class="tag">Kantian</span></td>
+          <td class="cell"><span class="pay">0, 5</span></td>
+        </tr>
+        <tr>
+          <th scope="row">D</th>
+          <td class="cell"><span class="pay">5, 0</span></td>
+          <td class="cell nash"><span class="pay">1, 1</span><span class="tag">Nash</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <figcaption>Two agents who each play it safe end up at 1, 1. I work on getting learning agents to 3, 3 without anyone forcing them there.</figcaption>
+  </figure>
+</section>
+
+<section aria-labelledby="about">
+  <h2 id="about">About</h2>
+  <div class="prose">
+    <p>I work in Prof. Y. Narahari's Game Theory Lab at IISc, where I study how self-interested agents can be steered toward outcomes that are good for everyone. My tools are mechanism design, multi-agent reinforcement learning and alternatives to Nash equilibrium, in particular John Roemer's Kantian equilibrium.</p>
+    <p>I got here by applying machine learning to social problems. I started out forecasting and analyzing them, and I now work on modeling and fixing the incentive problems underneath them.</p>
+    <p>Before IISc, I completed a B.E. (Hons.) in Computer Science with a minor in Finance at BITS Pilani, Hyderabad Campus, where I spent two years doing research with Prof. Manik Gupta on air quality data and forecasting. I have also interned in Prof. Narahari's lab, building LLM agents for portfolio management, as an Applied AI/ML intern at JPMorgan Chase, and as a machine learning intern at Voicegain.</p>
+  </div>
+</section>
+
+<section aria-labelledby="research">
+  <h2 id="research">Research</h2>
+  <div class="projects">
+    <article>
+      <h3>Learning agents that reason like Kantians</h3>
+      <p>A Nash player asks whether they would gain by changing their action alone. A Kantian player asks whether they would want everyone to change their action in the same proportion. Kantian reasoning offers a way out of social dilemmas, yet there is surprisingly little work on learning agents that reason this way. I am developing Kant-Q, a Q-learning algorithm for Kantian equilibrium. The questions I want to answer next: do Kantian learners provably converge, what happens when Nash and Kantian agents learn in the same system, and can LLM agents be built to reason this way, so that they cooperate without colluding?</p>
+    </article>
+    <article>
+      <h3>Contract design for carbon farming</h3>
+      <p>Carbon farming programs pay farmers to adopt practices that store carbon in soil, usually through an aggregator who verifies and sells the credits. Smallholder farmers rarely take part, even when it would benefit both sides. I formulated carbon farming as a Stackelberg game in which the aggregator offers contracts and farmers best-respond each season, with the aggregator learning which contracts work through reinforcement learning in a partially observable, non-stationary environment. The aggregator reached 87.7% of achievable adoption on large farms, but only 8.2% on smallholdings. As first author, I formulated the problem, built the simulator, ran the experiments and wrote the paper.</p>
+    </article>
+    <article>
+      <h3>Air quality data and forecasting</h3>
+      <p>I set out to test time-series foundation models on air pollution forecasting and found no usable dataset. The ones available came from unofficial sources, covered a single country or had month-long gaps. So I built Air Quality Arena, to our knowledge the largest and most geographically diverse ML-ready air quality dataset, with more than 14,000 station-pollutant series covering 6 pollutants across 7 countries, collected from government sources. Benchmarking 11 time-series foundation models on it showed that they generally beat baselines trained on the target series, and that forecasts are worst exactly where pollution is worst, in India and Mexico. Before that, I worked on a remote sensing analysis of air pollution and urbanization in peri-urban Hyderabad.</p>
+    </article>
+  </div>
+</section>
+
+<section aria-labelledby="papers">
+  <h2 id="papers">Papers</h2>
+  <ol class="pubs">
+    {% for pub in site.data.publications %}
+    <li>
+      <p class="pub-title">{{ pub.title }}</p>
+      <p class="pub-authors">{% for a in pub.authors %}{% if a == site.author.name %}<strong>{{ a }}</strong>{% else %}{{ a }}{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}</p>
+      <p class="pub-venue">{{ pub.venue }}, {{ pub.year }}</p>
+      <p class="pub-links">{% for l in pub.links %}{% if l.url != "" %}<a href="{{ l.url }}">{{ l.name }}</a>{% endif %}{% endfor %}</p>
+    </li>
+    {% endfor %}
+  </ol>
+</section>
+
+<section aria-labelledby="news">
+  <h2 id="news">News</h2>
+  <dl class="news">
+    {% for item in site.data.news %}
+    <div><dt>{{ item.date }}</dt><dd>{{ item.text }}</dd></div>
+    {% endfor %}
+  </dl>
+</section>
+
+{% if site.posts.size > 0 %}
+<section aria-labelledby="writing">
+  <h2 id="writing">Recent posts</h2>
+  <ul class="post-list">
+    {% for post in site.posts limit:3 %}
+    <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a> <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%-d %b %Y" }}</time></li>
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}

@@ -1,0 +1,27 @@
+# Site settings. Edit these, then push. GitHub rebuilds the site in about a minute.
+# Changes to this file are the only ones that need a restart if you ever preview locally.
+
+title: Rishi Bharadwaj
+description: >-
+  Research Associate in the Game Theory Lab at IISc Bengaluru. Mechanism design,
+  multi-agent reinforcement learning and cooperative AI.
+
+author:
+  name: Rishi Bharadwaj          # used to bold your name in author lists
+  email: rishib62107@gmail.com    # change if you prefer a different contact address
+  github: Rishi-Bharadwaj         # GitHub username
+  scholar: "https://scholar.google.com/citations?user=pi2YJCwAAAAJ&hl=en"  # leave "" to hide
+  linkedin: ""                    # full LinkedIn URL, leave "" to hide
+  cv: /cv.pdf                     # put your CV PDF in the repo root with this name
+
+# For a repo named <username>.github.io, leave both of these as they are.
+url: ""
+baseurl: ""
+
+markdown: kramdown
+permalink: /blog/:year/:month/:title/
+timezone: Asia/Kolkata
+
+exclude:
+  - README.md
+  - preview

@@ -1,0 +1,31 @@
+---
+layout: default
+title: Cats
+permalink: /cats/
+description: Cats I have known, mostly from the BITS Hyderabad campus.
+---
+<h1 class="page-title">Cats</h1>
+<p class="lede">Cats I have known, mostly from the BITS Hyderabad campus.</p>
+
+{% comment %}
+  Any .jpg, .jpeg, .png or .webp you put in assets/cats/ shows up here automatically.
+  Name files like "biscuit.jpg" and the name becomes the caption (biscuit).
+{% endcomment %}
+{% assign shown = 0 %}
+<div class="cat-grid">
+  {% for file in site.static_files %}
+    {% if file.path contains '/assets/cats/' %}
+      {% assign ext = file.extname | downcase %}
+      {% if ext == '.jpg' or ext == '.jpeg' or ext == '.png' or ext == '.webp' %}
+        {% assign shown = shown | plus: 1 %}
+        <figure>
+          <img src="{{ file.path | relative_url }}" alt="{{ file.basename | replace: '-', ' ' }}" loading="lazy">
+          <figcaption>{{ file.basename | replace: '-', ' ' }}</figcaption>
+        </figure>
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+</div>
+{% if shown == 0 %}
+<p class="empty">Photos coming soon.</p>
+{% endif %}

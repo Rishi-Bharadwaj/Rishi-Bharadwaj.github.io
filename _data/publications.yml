@@ -1,0 +1,28 @@
+# Your papers, newest first. Each entry shows up on the home page.
+# authors: write your name exactly as author.name in _config.yml so it gets bolded.
+# links: any link with an empty url is hidden.
+
+- title: "Learning Principal-Agent Contracts for Equitable Smallholder Carbon Farming under Moral Hazard and Adverse Selection"
+  authors: ["Rishi Bharadwaj", "Yadati Narahari"]
+  venue: "arXiv preprint, under review"
+  year: 2026
+  links:
+    - { name: arXiv, url: "https://arxiv.org/abs/2609.20404" }
+    - { name: Code, url: "https://github.com/Rishi-Bharadwaj/carbon-farming-contract-design" }
+
+- title: "Air Quality Arena: A Large-Scale Multi-Region Ground Monitoring Dataset and Benchmark for Air Quality Forecasting with Time-Series Foundation Models"
+  authors: ["Rishi Bharadwaj", "Manik Gupta", "Pandarasamy Arjunan"]
+  venue: "2nd ICML Workshop on Foundation Models for Structured Data (non-archival)"
+  year: 2026
+  links:
+    - { name: Paper, url: "https://openreview.net/forum?id=CUXaSOR9fA" }
+    - { name: Code, url: "https://github.com/Rishi-Bharadwaj/Air-Quality-Arena" }
+    - { name: Dataset, url: "https://zenodo.org/records/19643640" }
+
+- title: "Tracking Air Pollution in Peri-Urban Hyderabad, India Using Remote Sensing Data"
+  authors: ["Ravi Bhushan", "Rishi Bharadwaj", "Manik Gupta", "Lavanya Suresh", "Timothy Clune"]
+  venue: "IEEE India Geoscience and Remote Sensing Symposium (InGARSS)"
+  year: 2025
+  links:
+    - { name: Paper, url: "https://doi.org/10.1109/InGARSS67683.2025.11583972" }
+    - { name: Code, url: "https://github.com/Rishi-Bharadwaj/air_pollution_correlation" }
